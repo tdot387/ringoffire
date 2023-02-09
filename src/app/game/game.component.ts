@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { Firestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-game',
@@ -13,8 +14,8 @@ export class GameComponent implements OnInit {
   currentCard?: string = '';
   game: Game;
 
-  constructor(public dialog: MatDialog) {
-    this.game = new Game();
+  constructor(public firestore: Firestore, public dialog: MatDialog) {
+    
   }
 
   ngOnInit(): void {
@@ -22,7 +23,7 @@ export class GameComponent implements OnInit {
   }
 
   newGame() {
-    //this.game = new Game();
+    this.game = new Game();
     console.log(this.game);
   }
 
